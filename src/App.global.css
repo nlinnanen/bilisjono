@@ -1,0 +1,19 @@
+.remove-btn {
+  display: none !important
+}
+
+.person:hover > * > .remove-btn {
+  display: inline-block !important;
+} 
+
+.remove-btn {
+  margin-top: 0px !important;
+  margin-bottom: -4px !important;
+}
+
+.person {
+  padding-bottom: 10px !important
+}
+.capitalized {
+  text-transform: capitalize !important;
+}
