@@ -1,5 +1,6 @@
 import { Button, Grid, Header, Icon } from 'semantic-ui-react'
 import { QueueType } from '../types'
+import RemoveButton from './RemoveButton'
 
 interface PropType {
   queue: QueueType[]
@@ -9,7 +10,6 @@ interface PropType {
 const flexStyles = {
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center',
 }
 
 const PersonOnBoard = ({ queue, setQueue }: PropType) => {
@@ -27,22 +27,33 @@ const PersonOnBoard = ({ queue, setQueue }: PropType) => {
 
   return (
     <div style={flexStyles}>
-      <Grid.Column floated="left">
-        <Header className='capitalized'>{queue[0].name}</Header>
-      </Grid.Column>
-      <Grid.Column textAlign="center" stretched>
-        <div style={{textAlign: "center"}}><Header >Voittaja?</Header></div>
+      <div className="person on-board" style={{ textAlign: 'left', justifyContent: "left" }}>
+        <Header className="on-board-header capitalized">{queue[0].name}</Header>
+        <RemoveButton setQueue={setQueue} queue={queue} name={queue[0].name} />
+      </div>
+      <div>
+        <div style={{ textAlign: 'center' }}>
+          <Header>Voittaja?</Header>
+        </div>
         <div>
           <Button.Group>
-            <Button onClick={() => handleWin(queue[1].name)} ><Icon name="chevron left" /></Button>
+            <Button onClick={() => handleWin(queue[1].name)}>
+              <Icon name="chevron left" />
+            </Button>
             <Button.Or text="vs" />
-            <Button onClick={() => handleWin(queue[0].name)}  ><Icon name="chevron right" /></Button>
+            <Button onClick={() => handleWin(queue[0].name)}>
+              <Icon name="chevron right" />
+            </Button>
           </Button.Group>
         </div>
-      </Grid.Column>
-      <Grid.Column floated="right">
-        <Header className='capitalized'>{queue[1].name}</Header>
-      </Grid.Column>
+      </div>
+      <div
+        className="person on-board"
+        style={{ textAlign: 'right', justifyContent: 'right' }}
+      >
+        <RemoveButton setQueue={setQueue} queue={queue} name={queue[1].name} />
+        <Header className="on-board-header capitalized">{queue[1].name}</Header>
+      </div>
     </div>
   )
 }

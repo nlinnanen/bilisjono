@@ -1,19 +1,35 @@
 .remove-btn {
-  display: none !important
+  display: none !important;
+  margin-bottom: -3px !important;
+  margin-top: -3px !important;
 }
 
-.person:hover > * > .remove-btn {
+.person:hover > * > .remove-btn,
+.person:hover > .remove-btn {
   display: inline-block !important;
-} 
-
-.remove-btn {
-  margin-top: 0px !important;
-  margin-bottom: -4px !important;
 }
 
 .person {
-  padding-bottom: 10px !important
+  padding-bottom: 10px !important;
 }
+
+.on-board {
+  width: 300px;
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.on-board > .remove-btn {
+  margin: 0 1em !important
+}
+
+
+.on-board-header {
+  margin: 0 !important;
+  padding: 0.5em 0 !important;
+}
+
 .capitalized {
   text-transform: capitalize !important;
 }

@@ -6,17 +6,17 @@ import {
   ListDescription,
   Icon,
 } from 'semantic-ui-react'
+import RemoveButton from './RemoveButton'
 
 const QueueItem = ({ queue, setQueue, time, name, idx }) => {
-
   const moveInQueue = (di) => {
     return () => {
       const newQueue = [...queue]
       const sum = Math.min(idx + di, queue.length - 1)
       const element = queue[sum]
       newQueue[idx] = element
-      if(element.name !== name ) {
-        newQueue[sum] = {name, time}
+      if (element.name !== name) {
+        newQueue[sum] = { name, time }
       }
       setQueue(newQueue)
     }
@@ -25,20 +25,13 @@ const QueueItem = ({ queue, setQueue, time, name, idx }) => {
   return (
     <List.Item className="person">
       <List.Content floated="right">
-        <Button  className='remove-btn'onClick={moveInQueue(-1)}>
+        <Button className="remove-btn" onClick={moveInQueue(-1)}>
           <Icon name="arrow up" />
         </Button>
-        <Button className='remove-btn' onClick={moveInQueue(1)}>
+        <Button className="remove-btn" onClick={moveInQueue(1)}>
           <Icon name="arrow down" />
         </Button>
-        <Button
-          className="remove-btn"
-          icon="trash"
-          type="button"
-          onClick={() => setQueue(queue.filter(({ name: n }) => n !== name))}
-          content="Poista"
-          labelPosition="left"
-        />
+        <RemoveButton setQueue={setQueue} queue={queue} name={name} />
       </List.Content>
       <ListContent>
         <ListHeader className="capitalized">{name}</ListHeader>
